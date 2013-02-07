@@ -7,7 +7,16 @@ one at http://mozilla.org/MPL/2.0/. */
 // which was written mostly by Alexandre Poirot - https://github.com/ochameau
 // http://blog.techno-barje.fr/
 
-var appCacheParse = {
+(function () {
+  // node or browser
+  var root = null;
+  if (typeof exports !== "undefined" && exports !== null) {
+    root = exports;
+  } else {
+    root = this;
+  }
+
+  root.appCacheParse = {
   parseCacheLine: function parseCacheLine (app, urls, line) {
     // Prepend webapp origin in case of absolute path
     if (line[0] == '/') {
@@ -92,12 +101,12 @@ var appCacheParse = {
               ':' + line);
           }
       }
-
-      return {
+    }
+    return {
         urls: urls,
         namespaces: namespaces,
         fallbacks: fallbacks
       };
-    }
   }
 };
+})();
