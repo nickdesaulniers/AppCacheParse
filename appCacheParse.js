@@ -34,7 +34,7 @@ one at http://mozilla.org/MPL/2.0/. */
       line[1] == '\t')) {
       namespaces.push([type, '', '']);
     } else {
-      namespaces.push([type, namespace, '']);
+      namespaces.push([type, 'namespace', '']);// ?
     }
   },
   parseFallbackLine: function parseFallbackLine (app, namespaces, fallbacks, line) {
@@ -61,6 +61,7 @@ one at http://mozilla.org/MPL/2.0/. */
     namespaces.push([type, namespace, fallback]);
     fallbacks.push(fallback);
   },
+  // App just needs to be an object with attribute origin
   parse: function parse (app, path, content) {
     var lines = content.split(/\r?\n/),
         urls = [],
@@ -76,7 +77,7 @@ one at http://mozilla.org/MPL/2.0/. */
       line = lines[i];
 
       // Ignore comments
-      if (!line.length || comentRE.test(line)) {
+      if (!line.length || commentRE.test(line)) {
         continue;
       }
 
@@ -84,8 +85,8 @@ one at http://mozilla.org/MPL/2.0/. */
       switch (line) {
         case 'CACHE MANIFEST': continue;
         case 'CACHE:': currentSection = 'CACHE'; continue;
-        case 'NETWORK': currentSection = 'NETWORK'; continue;
-        case 'FALLBACK': currentSection = 'FALLBACK'; continue;
+        case 'NETWORK:': currentSection = 'NETWORK'; continue;
+        case 'FALLBACK:': currentSection = 'FALLBACK'; continue;
         default:
           // Process cache, network, and fallback rules
           try {
