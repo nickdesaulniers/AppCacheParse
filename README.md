@@ -22,6 +22,9 @@ Parse an App Cache in JavaScript for debugging
       console.log(appCache);
     }
   };
+
+  xhr.open('GET', '/appCache.manifest', true);
+  xhr.send(null);
 </script>
 ```
 

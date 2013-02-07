@@ -7,6 +7,9 @@ one at http://mozilla.org/MPL/2.0/. */
 // which was written mostly by Alexandre Poirot - https://github.com/ochameau
 // http://blog.techno-barje.fr/
 
+// More parsing info
+// http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#parsing-cache-manifests
+
 (function () {
   // node or browser
   var root = null;
