@@ -22,7 +22,6 @@ Parse an App Cache in JavaScript for debugging
       console.log(appCache);
     }
   };
-
 </script>
 ```
 
